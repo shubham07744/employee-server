@@ -14,7 +14,11 @@ dotenv.config();
 connecttodb();
 const app = express() 
 
-app.use(cors())
+app.use(cors({
+    origin:"https://employee-client-seven.vercel.app",
+    methods:["GET", "POST", "PUT", "DELETE"],
+    credentials:true,
+}))
 app.use(express.json())  
 app.use(express.static('public/uploads'))
 app.use('/api/auth', authRouter)
